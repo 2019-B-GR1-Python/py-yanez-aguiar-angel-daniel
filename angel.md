@@ -1,2 +1,0 @@
-Yanez Aguiar
-Angel Daniel
