@@ -23,7 +23,9 @@ for columna_agrupada,df_completo in df_agrupado:
     print(columna_agrupada)
     print(df_completo)
     
-a = seccion_df['units'].value_counts()
+a = seccion_df['units'].value_counts().sort_values()
+
+print(a.index[0])
 a.empty
 
 def llenar_valores_vacios(series, tipo):
@@ -48,7 +50,9 @@ def llenar_valores_vacios(series, tipo):
             series_valores_llenos = series.fillna(promedio)
             return series_valores_llenos
         if(tipo == 'value_counts'):
-            
+            index = series.value_counts().index[0]
+            series_llenos = series.fillna(index)
+            return series_llenos
             
         
         
