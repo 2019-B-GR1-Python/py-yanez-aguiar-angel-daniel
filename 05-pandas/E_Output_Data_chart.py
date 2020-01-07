@@ -33,3 +33,7 @@ chart.add_series({'values': '=Sheet1!$A$1:$A$6'})
 worksheet.insert_chart('C1', chart)
 
 workbook.close()
+
+
+
+
