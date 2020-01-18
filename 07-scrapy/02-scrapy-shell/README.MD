@@ -62,3 +62,5 @@ $ response.xpath("//div[@class='quote']/span/a/@href").extract_first()
 ## scrapy startproject `nombre_proyecto`
 ```
 $ scrapy startproject arania_basica
+$ scrapy crawl introduccion_spider
+```
