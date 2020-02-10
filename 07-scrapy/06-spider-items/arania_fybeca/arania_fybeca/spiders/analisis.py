@@ -5,7 +5,7 @@ import os
 import nltk
 import seaborn as sns
 
-path_csv = "C:\\Users\\Ale\\Documents\\GitHub\\py-yanez-aguiar-angel-daniel\\07-scrapy\\06-spider-items\\arania_fybeca\\tmp\\productos-fybeca.csv"
+path_csv = "C:\\Users\\Angel\\Documents\\GitHub\\py-yanez-aguiar-angel-daniel\\07-scrapy\\06-spider-items\\arania_fybeca\\tmp\\productos-fybeca.csv"
 data_frame_test = pd.read_csv(path_csv,  encoding = 'unicode_escape',sep = ",")
 data_frame_test.dropna()
 data_frame_test.dtypes
