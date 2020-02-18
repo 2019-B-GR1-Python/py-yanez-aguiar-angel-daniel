@@ -1,7 +1,9 @@
+# arania_fybeca.py
 import scrapy
 from arania_fybeca.items import ProductoFybeca
 from scrapy.loader import ItemLoader
 from scrapy.loader.processors import TakeFirst
+import pandas as pd
 
 class AraniaFybeca(scrapy.Spider):
     name = "fybeca"
@@ -20,16 +22,28 @@ class AraniaFybeca(scrapy.Spider):
             tiene_detalle = len(detalles) > 0
             if(tiene_detalle):
                 producto_loader = ItemLoader(
-                    item = ProductoFybeca(),
-                    selector = producto
+                item = ProductoFybeca(),
+                selector = producto
                 )
-                #producto_loader.default_output_processor = TakeFirst()
+                # producto_loader.default_output_processor=TakeFirst()
+                
                 producto_loader.add_css(
                     'titulo',
                     'a.name::text'
                 )
+
                 producto_loader.add_xpath(
                     'imagen',
                     'div[contains(@class,"detail")]/a[contains(@class,"image")]/img[contains(@id,"gImg")]/@src'
                 )
+
+                producto_loader.add_css(
+                    'precio_normal',
+                    'div.side > div.price::attr(data-bind)'
+                )
+                producto_loader.add_css(
+                    'precio_descuento',
+                    'div.price-member > div::attr(data-bind)'
+                )
+                
                 yield producto_loader.load_item()
